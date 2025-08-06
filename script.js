@@ -8,7 +8,8 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const learnMoreBtn = document.querySelector('.btn--scroll-to');
-const featuresSection = document.querySelector('#section--1');
+
+const navLinks = document.querySelectorAll('.nav__link');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -33,9 +34,22 @@ document.addEventListener('keydown', function (e) {
 });
 
 //scroll
-
+//=========================================
 learnMoreBtn.addEventListener('click', () => {
+  const featuresSection = document.querySelector('#section--1');
   featuresSection.scrollIntoView({
     behavior: 'smooth',
   });
 });
+
+navLinks.forEach(navLink => {
+  navLink.addEventListener('click', e => {
+    e.preventDefault();
+
+    const section = document.querySelector(navLink.hash);
+    section.scrollIntoView({
+      behavior: 'smooth',
+    });
+  });
+});
+//==============================================
